@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <form action="/register" method="post">
+        <h5> What is your first name? </h5> 
+        <input type="text" name="first_name">
+        <h5> What is your last name? </h5> 
+        <input type="text" name="last_name">
+        <h5>Tell us your email address</h5>
+        <input type="text" name="email">
+        <h5> Please put in your password </h5> 
+        <input type="text" name="password">
+        <h5> Confirm your password</h5> 
+        <input type="text" name="confirm_password"><br><br>
+        <button type="submit">Submit</button>
+    </form>
+    <div>
+        <br><br><br>
+        <a href="index.html">Already a member? Go Login Now!</a>
+    </div>
+
+</body>
+</html>

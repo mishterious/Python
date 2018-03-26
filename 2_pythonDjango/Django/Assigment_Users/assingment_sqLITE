@@ -1,0 +1,16 @@
+
+>>> Users.objects.create(first_name="Mish", last_name="Dev",email_address="mdevestor@gmail.com", age=29)
+>>> from apps.assingment_apps.models import *
+>>> for user in Users.objects.all():
+...     print(user.first_name)
+... 
+Mish
+
+>>> Users.objects.create(first_name="Jeff", last_name="Bezos", email_address="bezos@amazon.com", age=54)
+
+
+>>> from apps.assingment_apps.models import *
+>>> for user in Users.objects.all(): 
+...     print user
+
+>>> Users.objects.get(id=1)

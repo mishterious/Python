@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Session Words</title>
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static '/stylesheet.css' %}">
+    
+</head>
+<body>
+    <div class="leftnav">
+        <form action="/load" method="post">
+            {% csrf_token %}
+            <h2>Add a new word</h2>
+            <input type="text" name="name" placeholder="Add a new word..">
+            <h4>Choose color</h4>
+            <input type="radio" name="color" value="red"> Red<br>
+            <input type="radio" name="color" value="green"> Green<br>
+            <input type="radio" name="color" value="blue"> Blue <br>
+            <input type="checkbox" name="fonts" value="big" checked="checked"> show in BIG fonts!<br>
+            <button>Add to Session</button>
+        </form>
+    </div>
+    <div class="rightnav">
+        <form action="/clear_session" method="get">
+            {% csrf_token %}
+            {% for words in request.session.obj %}
+                {% if words.color == "red" %}
+                    {% if words.fonts == "big" %}
+                        <h4><span style="color:red; font-size: 150%;">{{  words.word   }}</span> - added on {{ words.time }}</h4>
+                    {% else %}
+                        <h4><span style="color:red;">{{  words.word   }}</span> - added on {{ words.time }}</h4>
+                    {% endif %}
+                {% elif words.color == "green" %}
+                    {% if words.fonts == "big" %}
+                        <h4><span style="color:green; font-size: 150%;">{{  words.word   }}</span> - added on {{ words.time }}</h4>
+                    {% else %}
+                        <h4><span style="color:green;">{{  words.word   }}</span> - added on {{ words.time }}</h4>
+                    {% endif %}
+                {% else  %}
+                    {% if words.fonts == "big" %}
+                        <h4><span style="color:blue; font-size: 150%;">{{  words.word   }}</span> - added on {{ words.time }}</h4>
+                    {% else %}
+                        <h4><span style="color:blue;">{{  words.word   }}</span> - added on {{ words.time }}</h4>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        </form>
+    </div>
+</body>
+</html>

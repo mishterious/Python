@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+    <div class=''>
+        <h3>CodingDojo Wall</h3>
+        <h5>Welcome, {{ session['user'][0]['first_name'] }}</h5>
+        <form action="/thewall">
+            <button type="submit">See all posts</button>
+        </form>
+        <form action="/log_out">
+            <a href="/">log off</a>
+        </form>
+    </div>
+    <div class='middle'>
+        <form action="/addpost" method="post">
+            <textarea name="newpost" id="{{ session['user']['users_id'] }}" cols="100" rows="5"></textarea>
+            <button>Post a message</button>
+        </form>
+        <h1>Look at what my friends sent!</h1>
+        {% for x in allPosts: %}
+            <p>{{ x['post'] }}</p>
+            <p>{{ x['created_at'] }}</p>
+            {% for com in allComments: %}
+                {%  if com['posts_post_id'] == x['post_id'] %}
+                    <p>{{ com['mycomment'] }}</p>
+                    <p>{{ com['created_at'] }}</p>
+                    {% if com['users_user_id'] == session['user'][0]['user_id'] %}
+                        <form action="/remove" method="post">
+                            <button type="submit" name="deleteComment" value="{{  com['comment_id']   }}">Delete</button>
+                        </form>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+            <form action="/newcomment" method="post">
+                <input type="hidden" name="user_id" value="{{ x['post_id'] }}">
+                <textarea name="newComment" id="{{ session['user']['users_id'] }}" cols="70" rows="2"></textarea>
+                <button>Make comment</button>
+            </form>
+            <hr>
+         {% endfor %}
+    </div>
+</body>
+</html>

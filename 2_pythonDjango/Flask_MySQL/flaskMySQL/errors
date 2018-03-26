@@ -1,0 +1,22 @@
+
+NameError: global name 'render_template' is not defined
+
+
+
+NameError: global name 'querywef' is not defined
+
+
+
+File "/Users/Mish/Desktop/CodingDojo/2_pythonDjango/Flask_MySQL/flaskMySQL/mysqlconnection.py", line 10, in __init__
+    'database': wef, # we got db as an argument
+NameError: global name 'wef' is not defined
+
+
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = maybe
+NameError: global name 'maybe' is not defined
+
+SQLALCHEMY_TRACK_MODIFICATIONS
+  File "/Users/Mish/Desktop/CodingDojo/2_pythonDjango/Flask_MySQL/flaskMySQL/mysqlconnection.py", line 20
+    self.db = SQLAlchemy(pass)
+                            ^
+SyntaxError: invalid syntax

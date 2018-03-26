@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>Name:</tr>
+            <tr>Age:</tr>
+            <tr>Friend Since: </tr> 
+        </thead>
+        <tbody>
+            {% for friend in friends: %}
+            <tr>
+                <td>{{ friend['name'] }}</td>
+                <td>{{ friend['age'] }}</td>
+                <td>{{ friend['created_at'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h1>Add a Friend</h1>
+    <form action="/reachTheTop" method="post">
+        <p>Name: <input type="text" name="addName"></p>
+        <p>Age: <input type="text" name="addAge"></p>
+        <button value="Submit">Submit</button>
+    </form>
+</body>
+</html>

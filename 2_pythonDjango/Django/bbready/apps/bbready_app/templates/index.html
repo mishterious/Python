@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{% static 'bbready_app/css/style.css' %}" rel="stylesheet">
+</head>
+<body>
+    <h1>The Wall TWICE!</h1>
+    <h1>===========================================</h1>
+    {% if messages %}
+        {% for message in messages %}
+            <h1 style="color: red">{{ message }}</h1>
+        {% endfor %}   
+    {% endif %}
+
+    <form action="/login" method = "post">
+        {% csrf_token %}
+            <label for=""> Login:</label>
+            <input type="text" name="email">
+            <label for=""> Passwords: </label>
+            <input type="textarea" name="password">
+
+            <button class="button">Submit</button><br><br>
+    </form>
+
+    <form action="/register" method = "post">
+        {% csrf_token %}
+            <label for="">First Name</label>
+            <input type="text" name="first_name"><br><br>
+            <label for="">Last Name</label>
+            <input type="text" name="last_name"><br><br>
+            <label for="">Email</label>
+            <input type="text" name="email"><br><br>
+            <label for="">Password</label>
+            <input type="text" name="password"><br><br>
+            <label for="">Copy Password</label>
+            <input type="textarea" name="confirm_password"><br><br>
+            <label for="">About Me</label><br><br>
+            <textarea name="about_me" id="" cols="70" rows="4"></textarea><br><br>
+
+            <button class="button">Submit</button>
+    </form>
+    {% if messages %}
+    {% for message in messages %}
+        <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+    {% endfor %}
+    {% endif %}
+    {% block content %}
+    {% endblock %}
+
+
+    {% extends "bbready_app/layout.html" %}
+
+    {% block head %}
+    {{ block.super }}
+    {% endblock head %}
+    {% block title %}{{ block.super }} | Register{% endblock title %}
+
+
+    {% block content %}
+        <a href="/register">Register</a>
+        <form action="/login" method="post">
+            {% csrf_token %}
+            <ul>
+                <li>
+                    <label for="email">Email</label>
+                    <input type="text" name="email">
+                </li>
+                <li>
+                    <label for="password">Password:</label>
+                    <input type="password" name="password">
+                </li>
+                <li>
+                    <input type="submit" value="Submit">
+                </li>
+            </ul>
+        </form>
+    {% endblock %}
+
+    {% extends "bbready_app/layout.html" %}
+
+    {% block head %}
+    {{ block.super }}
+    {% endblock head %}
+    {% block title %}{{ block.super }} | Register{% endblock title %}
+
+    {% block content %}
+    <a href="/login">LOGIN</a>
+    <form action="/register" method="post">
+        {% csrf_token %}
+        <ul>
+            <li>
+                <label for="email">Email</label>
+                <input type="text" name="email" value="{{ old_form.email }}">
+            </li>
+            <li>
+                <label for="first_name">First Name:</label>
+                <input type="text" name="first_name" value="{{ old_form.first_name }}">
+            </li>
+            <li>
+                <label for="last_name">Last Name:</label>
+                <input type="text" name="last_name" value="{{ old_form.last_name }}">
+            </li>
+            <li>
+                <label for="birthdate">Birthdate (YYYY-MM-DD):</label>
+                <input type="text" name="birthdate" value="{{ old_form.birthdate }}">
+            </li>
+            <li>
+                <label for="password">Password:</label>
+                <input type="password" name="password">
+            </li>
+            <li>
+                <label for="confirm_password">Confirm Password</label>
+                <input type="password" name="confirm_password">
+            </li>
+            <input type="submit" value="Submit">
+        </ul>
+    </form>
+    {% endblock content %}
+    {% extends "bbready_app/layout.html" %}
+
+    {% block head %}
+    {{ block.super }}
+    {% endblock head %}
+    {% block title %}{{ block.super }} | Successful Login{% endblock title %}
+    {% block content %}
+            <h1>Welcome  {{ request.session.first_name }}</h1>
+            <a href="/logoff">logoff</a>
+    {% endblock content %}
+</body>
+</html>

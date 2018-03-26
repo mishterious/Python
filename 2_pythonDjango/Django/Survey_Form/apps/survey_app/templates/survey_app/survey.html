@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+    <form action="/result" method="post">
+        {% csrf_token %}
+        <h4>Your Name:</h4>
+        <input type="text" name="myname">
+        <h4>Dojo Location:</h4>
+        <select name="location" id="location">
+            <option value="mview">Mountain View</option>
+            <option value="cam">Cambridge</option>
+            <option value="cup">Cupertino</option>
+            <option value="San Francisco">San Francico</option>
+        </select>
+        <h4>Favorite Language:</h4>
+        <select name="language" id="language">
+            <option value="Javascript">Mountain View</option>
+            <option value="Ruby">Cambridge</option>
+            <option value="Python">Cupertino</option>
+            <option value="">San Francico</option>
+        </select>
+        <h4>Comments (optional):</h4>
+        <textarea name="comment" id="" cols="50" rows="12"></textarea>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

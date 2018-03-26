@@ -1,0 +1,47 @@
+
+-MIGRATE
+  > python manage.py makemigrations
+  > python manage.py migrate
+
+
+
+
+>>> from apps.books_apps.models import *
+
+>>> Authors.objects.create(first_name="J. R. R.", last_name="Tolkien", email="jrr@
+
+>>> tolkien = Authors.objects.first()
+>>> tolkien.book.add(Books.objects.first())
+>>> tolkien.save()
+>>> Books.objects.create(name="To Kill a Mockingbird", desc="The realities of life on a different time, in a different place, in a different life.")
+
+
+>>> Authors.objects.create(first_name="Harper", last_name="Lee", email="lee@penquin.com"
+
+>>> Authors.objects.create(first_name="Harper", last_name="Lee", email="lee@penquin.com")
+>>> lee = Authors.objects.first()
+
+
+>>> lee = Authors.objects.last()
+>>> lee.first_name
+>>> lee.book.add(Books.objects.first())
+>>> lee.save()
+>>> Books.objects.create(name="JaveScript", desc="Write Code and code your face off.")
+
+>>> Authors.objects.create(first_name="Speros", last_name="Athens", email="athens@dojo.com")
+
+
+
+>>> athens = Authors.objects.last()
+>>> athens.first_name 
+
+
+>>> athens.book.add(Books.objects.first())
+>>> athens.save()
+>>> Authors.objects.create(first_name="Michael", last_name="Dojo", email="ceo@dojo.com")
+
+
+>>> mike = Authors.objects.last()
+>>> mike.book.add(Books.objects.get(id=2))
+>>> mike.save()
+>>> mike.id

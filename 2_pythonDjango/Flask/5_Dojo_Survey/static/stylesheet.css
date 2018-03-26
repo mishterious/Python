@@ -1,0 +1,12 @@
+h3 {
+    width: 200px;
+    display: inline-block;
+}
+
+/* input {
+    display: inline-block;
+} */
+
+select{
+    display: inline-block;
+}

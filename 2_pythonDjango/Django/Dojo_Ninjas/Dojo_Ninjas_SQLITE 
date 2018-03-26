@@ -1,0 +1,19 @@
+>>> from apps.dojo_apps.models import *
+
+>>> Dojos.objects.create(name="CodingDojo Silicon Valley", city="Mountain View", state="CA")
+
+>>> jay = Ninjas.objects.create(dojo=x,first_name="Jay", last_name="Blue")
+
+>>> x = Dojos.objects.get(id=2)
+
+>>> jay = Ninjas.objects.create(dojo=x,first_name="Michael", last_name="Master") 
+
+>>> Ninjas.objects.first().dojo
+
+>>> Dojos.objects.get(id=3).delete()
+
+>>> Ninjas.objects.all()
+
+>>> Ninjas.objects.filter(first_name="Michael")
+
+>>> Ninjas.objects.filter(first_name="Michael")
